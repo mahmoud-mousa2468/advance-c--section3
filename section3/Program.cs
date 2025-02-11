@@ -135,7 +135,23 @@
             #endregion
 
             #region 08 Anonymous Method & Lambda Expression
+            List<int> Numbers = Enumerable.Range(1, 10).ToList();
 
+            // Anonymous Method
+            // C# 2.0 2005
+
+            //Func<int, bool> func = delegate (int X) { return X % 2 == 0; }; // Anonymous Method
+
+            //FindElements(Numbers, delegate (int X) { return X % 2 == 0; });
+
+            // Lambda Expression [Recommended]
+            // C# 3.0 2007
+
+            Func<int, bool> func = X => X % 2 == 0; // Lambda Expression
+
+            //FindElements(Numbers, delegate (int X) { return X % 2 == 0; });
+            FindElements(Numbers, N => N % 2 == 0);
+            FindElements(Numbers, N => N % 2 != 0);
             #endregion
         }
         public static void print(int x)
