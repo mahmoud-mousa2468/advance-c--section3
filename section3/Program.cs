@@ -135,7 +135,7 @@
             #endregion
 
             #region 08 Anonymous Method & Lambda Expression
-            List<int> Numbers = Enumerable.Range(1, 10).ToList();
+            //List<int> Numbers = Enumerable.Range(1, 10).ToList();
 
             // Anonymous Method
             // C# 2.0 2005
@@ -147,12 +147,35 @@
             // Lambda Expression [Recommended]
             // C# 3.0 2007
 
-            Func<int, bool> func = X => X % 2 == 0; // Lambda Expression
+            //Func<int, bool> func = X => X % 2 == 0; // Lambda Expression
 
-            //FindElements(Numbers, delegate (int X) { return X % 2 == 0; });
-            FindElements(Numbers, N => N % 2 == 0);
-            FindElements(Numbers, N => N % 2 != 0);
+            ////FindElements(Numbers, delegate (int X) { return X % 2 == 0; }); // Anonymous Method
+            //FindElements(Numbers, N => N % 2 == 0);
+            //FindElements(Numbers, N => N % 2 != 0);
             #endregion
+
+            #region Keyword - var
+            //// if you want to avoid the headache of data type(Predicate or Func ,string or int)
+            //var predicate = ConditionFunctions.CheckDivisableBy4;
+            #endregion
+            #region Function Returns Function - FP Feature
+            // first way to call
+            //var action = Fun01();
+            //action.Invoke();
+            // second way to call
+            //Fun01()();
+            #endregion
+        }
+        public static Action Fun01()
+        {
+            Action action = print;
+            //Action action = delegate () { Console.WriteLine("hello world"); };
+            //Action action = () => Console.WriteLine("Hello World");
+            return action;
+        }
+        public static void print()
+        {
+            Console.WriteLine("hello world");
         }
         public static void print(int x)
         {
